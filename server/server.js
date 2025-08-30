@@ -8,9 +8,9 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "https://billing-app-client-one.vercel.app",
+  origin: ["https://billing-app-client-one.vercel.app", "http://localhost:5173"],
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "X-Auth-Token"],
+  allowedHeaders: ["Content-Type", "x-auth-token", "X-Auth-Token", "Authorization"],
   credentials: true
 }));
 app.use(express.json());
