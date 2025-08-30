@@ -7,11 +7,15 @@ const cors = require('cors');
 const app = express();
 
 // Middleware
-const corsOptions = {
-  origin: ['http://localhost:5173', 'https://billing-app-client-one.vercel.app/'],
-  optionsSuccessStatus: 200
-};
-app.use(cors(corsOptions));
+app.use(cors({
+  origin: [
+    "https://billing-app-client-one.vercel.app", // your deployed frontend
+    "http://localhost:3000" // for local dev
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true
+}));
 app.use(express.json());
 
 // Connect to MongoDB
